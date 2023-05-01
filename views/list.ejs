@@ -39,6 +39,9 @@
       <div class="taskbox">
         <h2> Task </h2>
         <hr />
+        <% if(item.length===0) { %>
+          <p>No Task Available</p>
+        <%} else{ %>
         <% for( var i = 0; i < item.length; i++){ %>
         <form action="/remove" method="POST">
           <div class="item">
@@ -46,7 +49,8 @@
             <span class="checkmark"></span>
             <%= item[i] %>
           </div>
-          <% } %>
+          <% } } %>
+
           <hr />
           <button class="removeButton" formaction="/remove" type="submit"> Remove Selected </button>
         </form>
@@ -56,9 +60,12 @@
       <div class="taskbox">
         <h2> Completed task </h2>
         <hr />
+        <% if(complete.length===0) { %>
+          <p>No Completed Tasks</p>
+        <% } else {%>
         <% for(var i = 0; i < complete.length; i++){ %>
         <div class="item"><input type="checkbox" checked><%= complete[i] %> </div>
-        <% } %>
+        <% }} %>
         <hr />
         <form action="/removeall" method="post">
           <button class="clearallbutton" type="submit">Clear all</button>
