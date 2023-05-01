@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <title> ToDo App </title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="header">
+    <p>Made by Pearlin</p>
+  </div><br>
+  <div class="container">
+    <div class="box" id="heading">
+      <h1>Things to do Today</h1>
+      <h3><%= kindOfday %></h3>
+    </div>
+
+    <div class="box">
+
+      <form action="/" method="POST">
+
+        <input type="text" name="listTodo" placeholder="New Task">
+        <button class="addButton"> + </button>
+      </form>
+
+      <div class="taskstat item">
+        <div class="count">
+          <span class="all-tasks"><%= item.length %></span>Tasks
+        </div>
+        <div class="count2">
+          <span class="all-tasks"><%= complete.length %></span>Tasks Completed
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-layout">
+
+      <div class="taskbox">
+        <h2> Task </h2>
+        <hr />
+        <% for( var i = 0; i < item.length; i++){ %>
+        <form action="/remove" method="POST">
+          <div class="item">
+            <input type="checkbox" name="check" value="<%= item[i] %>" />
+            <span class="checkmark"></span>
+            <%= item[i] %>
+          </div>
+          <% } %>
+          <hr />
+          <button class="removeButton" formaction="/remove" type="submit"> Remove Selected </button>
+        </form>
+      </div>
+
+
+      <div class="taskbox">
+        <h2> Completed task </h2>
+        <hr />
+        <% for(var i = 0; i < complete.length; i++){ %>
+        <div class="item"><input type="checkbox" checked><%= complete[i] %> </div>
+        <% } %>
+        <hr />
+        <form action="/removeall" method="post">
+          <button class="clearallbutton" type="submit">Clear all</button>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="box">
+
+    </div>
+
+
+
+
+</body>
+
+</html>
